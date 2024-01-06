@@ -1,0 +1,59 @@
+package eventhandling;
+import java.awt.*;
+import java.awt.event.*;
+public class counter extends Frame{
+ counter()
+ {
+	 //layout
+	 setLayout(null);
+	 setVisible(true);
+	 setResizable(false);
+	 setSize(400,400);
+	
+	 //title
+	 Label text=new Label("TALLY COUNTER");
+	 text.setBounds(130,40,100,40);
+	 add(text);
+	 
+	 //increment box
+	 TextField value=new TextField("0");
+	 value.setBounds(130,100,100,30);
+	 add(value);
+	 
+	 //reset button
+	 Button reset=new Button("RESET");
+	 reset.setBounds(100,200,60,30);
+	 add(reset);
+	 
+	 //action for reset button
+	 ActionListener resetlistener=new ActionListener() {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 value.setText("0");
+		 }
+	 };
+	 
+	 reset.addActionListener(resetlistener);
+	 
+	 //count button
+	 Button count=new Button("COUNT");
+	 count.setBounds(180,200,60,30);
+	 add(count);
+	 
+	 //action for count button
+	 ActionListener countlistener=new ActionListener() {
+		 public void actionPerformed(ActionEvent e)
+		 {
+			 int num=Integer.parseInt(value.getText());
+			 value.setText(Integer.toString(++num));
+		 }
+	 };
+	 
+	 count.addActionListener(countlistener);
+ }
+ public static void main(String[] args)
+ {
+	 //constructor to call counter class
+	 counter c=new counter();
+ }
+}
